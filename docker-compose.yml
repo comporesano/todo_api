@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  psql-database:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: mighty_lord
+      POSTGRES_PASSWORD: darwin_hello
+      POSTGRES_DB: todo_api
+    volumes:
+    ports:
+
+  fast_todo_api:
+    build:
+      context: 
+      dockerfile: Dockerfile
+    volumes:
+    ports:
+    depends_on:
+      - psql-database

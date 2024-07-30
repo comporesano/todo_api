@@ -1,3 +1,4 @@
 # Lock directories
 /env
+/__pycache__
 # Lock files
