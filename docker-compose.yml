@@ -5,11 +5,14 @@ services:
     image: postgres:15
     restart: always
     environment:
-      POSTGRES_USER: mighty_lord
-      POSTGRES_PASSWORD: darwin_hello
-      POSTGRES_DB: todo_api
+      - POSTGRES_USER: todo_admin
+      - POSTGRES_PASSWORD: darwin_passw
+      - POSTGRES_DB: todo_tasks
     volumes:
+      - ./src/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./src/database/todo_tasks.sql:/docker-entrypoint-initdb.d/todo_tasks.sql
     ports:
+      - "5433:5432"
 
   fast_todo_api:
     build:
