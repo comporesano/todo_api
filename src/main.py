@@ -2,7 +2,7 @@ from fastapi_users import fastapi_users, FastAPIUsers
 from fastapi import FastAPI, Depends
 from auth.manager import get_user_manager
 from auth.schemas import UserCreate, UserRead   
-from database.database import User, get_async_session
+from database.database import User, get_async_session, DATABASE_URL
 from models.models import task, privilege, user
 from auth.auth import auth_backend
 from sqlalchemy.exc import IntegrityError
@@ -229,3 +229,4 @@ async def edit_task(task_id: int,
             return {'data': f'User {user.id} has no privileges for editing task {task_id}'}
     else:
         return {'data': f'No task with id - {task_id}'}
+
